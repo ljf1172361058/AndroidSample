@@ -1,3 +1,4 @@
+package com.example.lizhihui.androidfluxsample;
 
 import org.junit.Test;
 

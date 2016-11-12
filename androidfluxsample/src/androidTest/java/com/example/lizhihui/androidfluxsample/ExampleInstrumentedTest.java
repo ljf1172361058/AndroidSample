@@ -1,3 +1,4 @@
+package com.example.lizhihui.androidfluxsample;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -20,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.lizhihui.androidsample", appContext.getPackageName());
+        assertEquals("com.example.lizhihui.androidfluxsample", appContext.getPackageName());
     }
 }
