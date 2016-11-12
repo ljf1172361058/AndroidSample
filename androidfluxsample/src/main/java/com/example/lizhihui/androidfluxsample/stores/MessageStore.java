@@ -25,6 +25,10 @@ public class MessageStore extends Store {
     @Override
     public void onAction(Action action) {
         switch (action.getType()) {
+            case MessageAction.ACTION_OLD_MESSAGE:
+                Log.i("test", "ACTION_OLD_MESSAGE");
+                mMessage.setMessage((String) action.getData());
+                break;
             case MessageAction.ACTION_NEW_MESSAGE:
                 Log.i("test", "ACTION_NEW_MESSAGE");
                 mMessage.setMessage((String) action.getData());

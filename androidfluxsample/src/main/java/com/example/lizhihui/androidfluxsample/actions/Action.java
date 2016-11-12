@@ -1,7 +1,7 @@
 package com.example.lizhihui.androidfluxsample.actions;
 
 /**
- * Created by Maibenben on 2016/11/12.
+ * Created by Lizhihui on 2016/11/12.
  */
 
 public class Action<T> {

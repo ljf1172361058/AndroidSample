@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.example.lizhihui.androidfluxsample.R;
 import com.example.lizhihui.androidfluxsample.actions.ActionCreator;
+import com.example.lizhihui.androidfluxsample.actions.MessageAction;
 import com.example.lizhihui.androidfluxsample.dispatcher.Dispatcher;
 import com.example.lizhihui.androidfluxsample.rxBus.RxBus;
 import com.example.lizhihui.androidfluxsample.stores.MessageStore;
@@ -21,7 +22,8 @@ public class MainActivity extends RxAppCompatActivity {
     private ActionCreator mActionCreator;
     private MessageStore mStore;
 
-    private int i = 1;
+    private int oldNum = 1;
+    private int newNum = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,16 +43,24 @@ public class MainActivity extends RxAppCompatActivity {
                 .subscribe(new Action1<Store.StoreChangeEvent>() {
                     @Override
                     public void call(Store.StoreChangeEvent storeChangeEvent) {
-                        Toast.makeText(MainActivity.this, mStore.getMessage() + "__" + i, Toast.LENGTH_SHORT).show();
-                        i++;
+                        Toast.makeText(MainActivity.this, mStore.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
-        findViewById(R.id.activity_main).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.OLD).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("test", "开始");
-                mActionCreator.sendMessage("测试一下");
+                Log.i("test", "开始发送旧消息");
+                mActionCreator.sendMessage(MessageAction.ACTION_OLD_MESSAGE,"旧消息来了" + "__OLD__" + oldNum);
+                oldNum++;
+            }
+        });
+        findViewById(R.id.NEW).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("test", "开始发送新消息");
+                mActionCreator.sendMessage(MessageAction.ACTION_NEW_MESSAGE,"新消息来了" + "__NEW__" + newNum);
+                newNum++;
             }
         });
     }

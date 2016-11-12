@@ -22,7 +22,7 @@ public class ActionCreator {
         return mInstance;
     }
 
-    public void sendMessage(String message) {
-        dispatcher.dispatch(new MessageAction(MessageAction.ACTION_NEW_MESSAGE, message));
+    public void sendMessage(String type,String message) {
+        dispatcher.dispatch(new MessageAction(type, message));
     }
 }
