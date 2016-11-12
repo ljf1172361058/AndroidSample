@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        applicationId "com.example.lizhihui.androidsample"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    testCompile 'junit:junit:4.12'
+
+    // 编译RxJava
+    compile 'io.reactivex:rxjava:1.2.2'
+    // 编译RxAndroid
+    compile 'io.reactivex:rxandroid:1.2.1'
+    // 编译RxLifecycle(防止由于没有及时取消订阅而造成的的内存泄漏问题)
+    compile 'com.trello:rxlifecycle:1.0'
+    // If you want to bind to Android-specific RxLifecycle
+    compile 'com.trello:rxlifecycle-android:1.0'
+    // If you want pre-written Activities and Fragments you can subclass as providers
+    compile 'com.trello:rxlifecycle-components:1.0'
+    // If you want to use Navi for providers
+    compile 'com.trello:rxlifecycle-navi:1.0'
+    // If you want to use Kotlin syntax
+    compile 'com.trello:rxlifecycle-kotlin:1.0'
+}
